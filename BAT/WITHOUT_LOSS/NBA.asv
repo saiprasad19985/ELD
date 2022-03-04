@@ -123,7 +123,7 @@ function [bestX, fMin] = NBA(FitFunc, M, pop, dim, G, gamma, alpha, ...
             if (pFit(i) < fMin && rand < A(i))               
                 fMin = pFit(i);
                 
-                minVector(end+1) = fMin;
+                minVector(end(fMin)
 
                 bestX = pX(i, :);
                 bestIndex = i;  

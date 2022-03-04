@@ -54,10 +54,6 @@ display(['Fuel Cost  : ', num2str(F,10)]);
 display(['generation : ', num2str(P1,5)]);
 
 
-title('Objective space')
-xlabel('Iterations');
-ylabel('Fule Cost (Rs./hour)');
-legend('ELD without losses using BAT')
  %   F is the total fuel cost
  %P1 is the allocation vector
 

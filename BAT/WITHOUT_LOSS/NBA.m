@@ -1,10 +1,9 @@
 % Main programs
-
 function [bestX, fMin] = NBA(FitFunc, M, pop, dim, G, gamma, alpha, ...
     r0Max, r0Min, AMax, AMin, freqDMax, freqDMin, probMax, probMin, ...
         CMax, CMin, thetaMax, thetaMin, wMax, wMin)
     % Display help
-    help NBA.m
+    %help NBA.m
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % set the default parameters
     if nargin < 1
@@ -63,6 +62,7 @@ function [bestX, fMin] = NBA(FitFunc, M, pop, dim, G, gamma, alpha, ...
     % Start the iteration.
 
     sum = 0;
+    minValueVector = [];
     for iteration = 1:M
         % The compensation rates for Doppler effect in echoes
         C = rand(pop, 1) .* (CMax - CMin) + CMin;
@@ -134,7 +134,12 @@ function [bestX, fMin] = NBA(FitFunc, M, pop, dim, G, gamma, alpha, ...
             end
 
         end
-        fprintf('iter=%d fMin=%g\n', iteration, min(minVector));
+        if (~isempty(minVector))
+            minValue = min(minVector);
+            minValueVector(end+1) = minValue;
+        end
+
+
 
         if (iteration - bestIter > G)
             r = rand(pop, 1) .* 0.05 + 0.85;
@@ -142,7 +147,9 @@ function [bestX, fMin] = NBA(FitFunc, M, pop, dim, G, gamma, alpha, ...
         end
 
     end
-
+    for k = 1:500
+        fprintf('iter=%d fMin=%g\n', k, minValueVector(k));
+    end
     % End of the main program
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

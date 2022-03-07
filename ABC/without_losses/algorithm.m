@@ -192,7 +192,7 @@ end;
 
 
 
-fprintf('Ýter=%d ObjVal=%g\n',iter,GlobalMin);
+fprintf('iter=%d ObjVal=%g\n',iter,GlobalMin);
 iter=iter+1;
 
 end % End of ABC
